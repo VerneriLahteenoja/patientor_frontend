@@ -1,28 +1,23 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import patientService from '../services/patients';
 import { Patient } from '../types';
-import axios from 'axios';
+import { useParams } from 'react-router-dom';
 
 // Render patient info of given id
-const PatientPage = async (id: string) => {
+const PatientPage = () => {
   const [patient, setPatient] = useState<Patient | null>(null);
-  try {
-    const patientFound = await patientService.getById(id);
-    if (patientFound) {
-      setPatient(patientFound);
-    }
-  } catch (e: unknown) {
-    if (axios.isAxiosError(e)) {
-      if (e?.response?.data && typeof e?.response?.data === "string") {
-        const message = e.response.data.replace('Something went wrong. Error: ', '');
-        console.error(message);
-      } else {
-        console.error("Unrecognized axios error");
-      }
-    } else {
-      console.error("Unknown error", e);
-    }
-  }
+  const id = useParams().id
+
+  useEffect(() => {
+    const getPatientById = async () => {
+      const patientFound = await patientService.getById(String(id));
+      if (patientFound) {
+        setPatient(patientFound);
+      } 
+    };
+    getPatientById();
+  }, []);
+
   if (!patient) {
     return (
     <div>
