@@ -6,7 +6,7 @@ import { useParams } from 'react-router-dom';
 // Render patient info of given id
 const PatientPage = () => {
   const [patient, setPatient] = useState<Patient | null>(null);
-  const id = useParams().id
+  const id = useParams().id;
 
   useEffect(() => {
     const getPatientById = async () => {
@@ -16,7 +16,7 @@ const PatientPage = () => {
       } 
     };
     getPatientById();
-  }, []);
+  }, [id]);
 
   if (!patient) {
     return (
@@ -25,17 +25,30 @@ const PatientPage = () => {
     </div>
     );
   }
-  //TODO: add routing to home button
+  console.log(patient);
   return (
     <div>
       <h1>Patientor</h1>
-      <button type="button">Home</button>
       <div>
         <h3>{patient.name}</h3>
-        <br />
-        <p>ssn: {patient.ssn}</p>
-        <p>occupation: {patient.occupation}</p>
+        <p>
+          ssn: {patient.ssn}
+          <br />
+          occupation: {patient.occupation}
+        </p>
       </div>
+      {patient.entries.length > 0 && <div>
+        <h4>entries</h4>
+        <div>
+          {patient.entries.map(entry => 
+            <div key={entry.id}>
+              <p>{entry.date} {entry.description}</p>
+              <ul>
+                {entry.diagnosisCodes?.map(code => <li key={code}>{code}</li>)}
+              </ul>
+            </div>)}
+        </div>
+      </div>}
     </div>
   );
 };
