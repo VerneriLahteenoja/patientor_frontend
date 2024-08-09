@@ -72,4 +72,16 @@ export interface DiagnosesProps {
   diagnoses: Diagnosis[];
 }
 
+export interface HospitalEntryDetailsProps {
+  entry: HospitalEntry
+}
+
+export interface OccupationalHealthcareEntryDetailsProps {
+  entry: OccupationalHealthcareEntry
+}
+
+export interface HealthCheckEntryDetailsProps {
+  entry: HealthCheckEntry
+}
+
 export type PatientFormValues = Omit<Patient, "id" | "entries">;
