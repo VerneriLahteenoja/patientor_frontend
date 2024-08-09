@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import patientService from '../services/patients';
-import { DiagnosesProps, Patient } from '../types';
+import patientService from '../../services/patients';
+import { DiagnosesProps, Patient } from '../../types';
 import { useParams } from 'react-router-dom';
 
 // Render patient info of given id
