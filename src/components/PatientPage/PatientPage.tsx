@@ -1,7 +1,10 @@
 import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+
 import patientService from '../../services/patients';
 import { DiagnosesProps, Patient } from '../../types';
-import { useParams } from 'react-router-dom';
+import EntryDetails from './entryDetails';
+
 
 // Render patient info of given id
 const PatientPage = (props: DiagnosesProps) => {
@@ -27,6 +30,7 @@ const PatientPage = (props: DiagnosesProps) => {
     );
   }
   console.log(patient);
+  console.log(props.diagnoses);
   return (
     <div>
       <h1>Patientor</h1>
@@ -43,10 +47,7 @@ const PatientPage = (props: DiagnosesProps) => {
         <div>
           {patient.entries.map(entry => 
             <div key={entry.id}>
-              <p>{entry.date} {entry.description}</p>
-              <ul>
-                {entry.diagnosisCodes?.map(code => <li key={code}>{code} {props.diagnoses.find(d => d.code === code)?.name}</li>)}
-              </ul>
+              <EntryDetails entry={entry} />        
             </div>)}
         </div>
       </div>}
