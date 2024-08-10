@@ -1,6 +1,6 @@
 import { Entry, HospitalEntryDetailsProps, OccupationalHealthcareEntryDetailsProps, HealthCheckEntryDetailsProps } from "../../types";
 
-
+//TODO: Add some styling (borders?) to entries
 const assertNever = (value: never) => {
   throw new Error(`Error: ${value}`);
 };
@@ -12,7 +12,7 @@ const HospitalEntryDetails = ({ entry }: HospitalEntryDetailsProps) => {
   return (
     <div>
       <p>{entry.date} {entry.description}</p>
-      {entry.type}
+      Entry type: {entry.type}
       <br />
       Discharge: {entry.discharge.date} {entry.discharge.criteria}
       <br />
@@ -26,7 +26,7 @@ const OccupationalHealthcareEntryDetails = ({ entry }: OccupationalHealthcareEnt
   return (
     <div>
       <p>{entry.date} {entry.description}</p>
-      {entry.type}
+      Entry type: {entry.type}
       <br />
       Employer: {entry.employerName}
       <br />
@@ -40,9 +40,9 @@ const HealthCheckEntryDetails = ({ entry }: HealthCheckEntryDetailsProps) => {
   return (
     <div>
       <p>{entry.date} {entry.description}</p>
-      {entry.type}
+      Entry type: {entry.type}
       <br />
-      {entry.healthCheckRating}
+      Health rating: {entry.healthCheckRating}
     </div>
   );
 };
