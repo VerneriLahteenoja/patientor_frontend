@@ -11,7 +11,12 @@ const assertNever = (value: never) => {
 const HospitalEntryDetails = ({ entry }: HospitalEntryDetailsProps) => {
   return (
     <div>
+      <p>{entry.date} {entry.description}</p>
       {entry.type}
+      <br />
+      Discharge: {entry.discharge.date} {entry.discharge.criteria}
+      <br />
+      Specialist: {entry.specialist}
     </div>
   );
 };
@@ -20,7 +25,12 @@ const HospitalEntryDetails = ({ entry }: HospitalEntryDetailsProps) => {
 const OccupationalHealthcareEntryDetails = ({ entry }: OccupationalHealthcareEntryDetailsProps) => {
   return (
     <div>
+      <p>{entry.date} {entry.description}</p>
       {entry.type}
+      <br />
+      Employer: {entry.employerName}
+      <br />
+      {entry.sickLeave && <div>Sickleave: {entry.sickLeave.startDate} - {entry.sickLeave.endDate}</div>}
     </div>
   );
 };
@@ -29,7 +39,10 @@ const OccupationalHealthcareEntryDetails = ({ entry }: OccupationalHealthcareEnt
 const HealthCheckEntryDetails = ({ entry }: HealthCheckEntryDetailsProps) => {
   return (
     <div>
+      <p>{entry.date} {entry.description}</p>
       {entry.type}
+      <br />
+      {entry.healthCheckRating}
     </div>
   );
 };
