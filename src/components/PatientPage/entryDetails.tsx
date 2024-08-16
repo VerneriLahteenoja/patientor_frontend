@@ -1,4 +1,6 @@
 import { Entry, HospitalEntryDetailsProps, OccupationalHealthcareEntryDetailsProps, HealthCheckEntryDetailsProps } from "../../types";
+import FavoriteIcon from '@mui/icons-material/Favorite';
+//import { SvgIcon } from "@mui/material";
 
 
 const styling = {
@@ -44,12 +46,21 @@ const OccupationalHealthcareEntryDetails = ({ entry }: OccupationalHealthcareEnt
 
 // Hospital
 const HealthCheckEntryDetails = ({ entry }: HealthCheckEntryDetailsProps) => {
+
+  const healthColors = {
+    0: 'green',
+    1: 'yellow',
+    2: 'red',
+    3: 'grey'
+  }
+
   return (
     <div style={styling}>
       <p>{entry.date} {entry.description}</p>
       Entry type: {entry.type}
       <br />
-      Health rating: {entry.healthCheckRating}
+      Health rating: {entry.healthCheckRating} 
+      <FavoriteIcon style={{ color: healthColors[entry.healthCheckRating] }}></FavoriteIcon>
     </div>
   );
 };
