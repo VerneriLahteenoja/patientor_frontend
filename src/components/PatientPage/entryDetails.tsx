@@ -52,7 +52,7 @@ const HealthCheckEntryDetails = ({ entry }: HealthCheckEntryDetailsProps) => {
     1: 'yellow',
     2: 'red',
     3: 'grey'
-  }
+  };
 
   return (
     <div style={styling}>
