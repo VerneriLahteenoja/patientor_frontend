@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { SyntheticEvent, useState } from "react";
 
 
 const EntryForm = () => {
@@ -7,8 +7,9 @@ const EntryForm = () => {
   const [specialist, setSpecialist] = useState('');
   const [healthCheckRating, setHealthCheckRating] = useState('');
 
-  const onSubmit = () => {
+  const onSubmit = (event: SyntheticEvent) => {
     //TODO: implement form submit
+    event.preventDefault();
     console.log('submit');
   }
   const onCancel = () => {
@@ -21,25 +22,25 @@ const EntryForm = () => {
   return (
     <div>
       <h1>New HealthCheck entry</h1>
-      <form>
+      <form onSubmit={onSubmit}>
         <div>
           <label>description</label>
-          <input type="text" />
+          <input type="text" value={description} onChange={({target}) => setDescription(target.value)} />
         </div>
         <div>
           <label>date</label>
-          <input type="text" />
+          <input type="text" value={date} onChange={({target}) => setDescription(target.value)} />
         </div>
         <div>
           <label>specialist</label>
-          <input type="text" />
+          <input type="text" value={specialist} onChange={({target}) => setDescription(target.value)} />
         </div>
         <div>
           <label>healthCheckRating</label>
-          <input type="text" />
+          <input type="text" value={healthCheckRating} onChange={({target}) => setDescription(target.value)} />
         </div>
         <button type="submit">Add</button>
-        <button type="button">Cancel</button> 
+        <button type="button" onClick={() => oncancel}>Cancel</button> 
       </form>
     </div>
   )
