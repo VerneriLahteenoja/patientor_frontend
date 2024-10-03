@@ -12,8 +12,10 @@ const EntryForm = () => {
     console.log('submit');
   }
   const onCancel = () => {
-    //TODO: implement form cancel
-    console.log('cancel');
+    setDescription('');
+    setDate('');
+    setSpecialist('');
+    setHealthCheckRating('');
   }
   //TODO: style form
   return (
