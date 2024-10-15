@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import patientService from '../../services/patients';
 import { DiagnosesProps, Patient } from '../../types';
 import EntryDetails from './entryDetails';
+import EntryForm from './entryForm';
 
 
 // Render patient info of given id
@@ -42,6 +43,7 @@ const PatientPage = (props: DiagnosesProps) => {
           occupation: {patient.occupation}
         </p>
       </div>
+      <EntryForm />
       {patient.entries.length > 0 && <div>
         <h4>entries</h4>
         <div>
