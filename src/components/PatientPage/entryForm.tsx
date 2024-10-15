@@ -18,6 +18,7 @@ const EntryForm = () => {
     setSpecialist('');
     setHealthCheckRating('');
   };
+
   //TODO: style form
   return (
     <div>
@@ -40,7 +41,7 @@ const EntryForm = () => {
           <input type="text" value={healthCheckRating} onChange={({target}) => setHealthCheckRating(target.value)} />
         </div>
         <button type="submit">Add</button>
-        <button type="button" onClick={() => oncancel}>Cancel</button> 
+        <button type="button" onClick={onCancel}>Cancel</button> 
       </form>
     </div>
   );
