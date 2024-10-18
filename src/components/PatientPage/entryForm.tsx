@@ -1,3 +1,4 @@
+import { Button, TextField } from "@mui/material";
 import { SyntheticEvent, useState } from "react";
 
 
@@ -24,26 +25,48 @@ const EntryForm = () => {
     <div>
       <h1>New HealthCheck entry</h1>
       <form onSubmit={onSubmit}>
-        <div>
-          <label>description</label>
-          <input type="text" value={description} onChange={({target}) => setDescription(target.value)} />
-        </div>
-        <div>
-          <label>date</label>
-          <input type="text" value={date} onChange={({target}) => setDate(target.value)} />
-        </div>
-        <div>
-          <label>specialist</label>
-          <input type="text" value={specialist} onChange={({target}) => setSpecialist(target.value)} />
-        </div>
-        <div>
-          <label>healthCheckRating</label>
-          <input type="text" value={healthCheckRating} onChange={({target}) => setHealthCheckRating(target.value)} />
-        </div>
-        <button type="submit">Add</button>
-        <button type="button" onClick={onCancel}>Cancel</button> 
+          <TextField 
+            label="description"
+            fullWidth
+            value={description}
+            onChange={({target}) => setDescription(target.value)}
+          />
+          <TextField 
+            label="date"
+            fullWidth
+            value={date}
+            onChange={({target}) => setDate(target.value)}
+          />
+          <TextField 
+            label="specialist"
+            fullWidth
+            value={specialist}
+            onChange={({target}) => setSpecialist(target.value)}
+          />
+          <TextField 
+            label="healthCheckRating"
+            fullWidth
+            value={healthCheckRating}
+            onChange={({target}) => setHealthCheckRating(target.value)}
+          />
+          <Button 
+            type="submit"
+            style={{ float: "left" }}
+            variant="contained"          
+          >
+            Add
+          </Button>
+          <Button 
+            type="button"
+            style={{ float: "right" }}
+            variant="contained"
+            onClick={onCancel}
+          >
+            Cancel
+          </Button>
       </form>
     </div>
+    
   );
 };
 
