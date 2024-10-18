@@ -45,6 +45,7 @@ const PatientPage = (props: DiagnosesProps) => {
       </div>
       <EntryForm />
       {patient.entries.length > 0 && <div>
+        <br/>
         <h4>entries</h4>
         <div>
           {patient.entries.map(entry => 
