@@ -88,3 +88,6 @@ export type PatientFormValues = Omit<Patient, "id" | "entries">;
 
 type UnionOmit<T, K extends string | number | symbol> = T extends unknown ? Omit<T, K> : never;
 export type NewEntryNoId = UnionOmit<Entry, "id">;
+
+type UnionExtract<T, K extends keyof T> = T extends unknown ? Pick<T, K> : never;
+export type EntryTypesOnly = UnionExtract<Entry, "type">;
