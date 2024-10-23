@@ -43,7 +43,7 @@ const PatientPage = (props: DiagnosesProps) => {
           occupation: {patient.occupation}
         </p>
       </div>
-      <EntryForm />
+      <EntryForm id={String(id)} />
       {patient.entries.length > 0 && <div>
         <br/>
         <h4>entries</h4>
