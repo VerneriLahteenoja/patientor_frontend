@@ -1,18 +1,42 @@
 import { Button, TextField } from "@mui/material";
 import { SyntheticEvent, useState } from "react";
+import entryService from "../../services/entries";
+import { EntryTypesOnly, NewEntryNoId } from "../../types";
 
 
-const EntryForm = () => {
+interface Props {
+  id: string;
+}
+
+const EntryForm = ({ id }: Props) => {
   const [description, setDescription] = useState('');
   const [date, setDate] = useState('');
   const [specialist, setSpecialist] = useState('');
   const [healthCheckRating, setHealthCheckRating] = useState('');
+  const [type, setType] = useState('');
 
   const onSubmit = (event: SyntheticEvent) => {
     //TODO: implement form submit
     event.preventDefault();
     console.log('submit');
+    try {
+      const newEntry: NewEntryNoId ={
+        type,
+        description,
+        date,
+        specialist,
+        healthCheckRating: Number(healthCheckRating)
+      }
+      entryService.create(newEntry, id);
+    } catch (error) {
+      if (error instanceof Error) {
+        console.error(error.message);
+      } else {
+        throw error;
+      }
+    }
   };
+  
   const onCancel = () => {
     setDescription('');
     setDate('');
