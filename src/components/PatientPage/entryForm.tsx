@@ -26,7 +26,7 @@ const EntryForm = ({ id }: Props) => {
         date,
         specialist,
         healthCheckRating: Number(healthCheckRating)
-      }
+      };
       entryService.create(newEntry, id);
     } catch (error) {
       if (error instanceof Error) {
